@@ -15,7 +15,7 @@ def get_inventory(inventory_id):
 
     inventory = next ((inventory for inventory in inventory if inventory.id == inventory_id), None)
 
-    data = request.get_json
+    data = request.get_json()
 
     if not inventory:
         return jsonify("Inventory not found"), 401
