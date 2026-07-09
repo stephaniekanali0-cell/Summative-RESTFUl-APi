@@ -4,13 +4,13 @@ app = Flask(__name__)
 
 inventory=[]
 
-@app.route("/inventory", method=["GET"])
+@app.route("/inventory", methods=["GET"])
 def get_inventory():
 
     return jsonify("Inventory found"), 200
 
 
-@app.route("/inventory/<int:inventory_id>", method=["GET"])
+@app.route("/inventory/<int:inventory_id>", methods=["GET"])
 def get_inventory(inventory_id):
 
     inventory = next ((inventory for inventory in inventory if inventory.id == inventory_id), None)
@@ -36,7 +36,7 @@ def add_inventory():
     return jsonify("new_inventory.to_dict()"),201
 
 
-@app.route("/inventory/<int:inventory_id>", method=["PATCH"])
+@app.route("/inventory/<int:inventory_id>", methods=["PATCH"])
 def update_inventory(inventory_id):
 
     inventory = next ((inventory for inventory in inventory if inventory.id == inventory_id), None)
@@ -51,7 +51,7 @@ def update_inventory(inventory_id):
         return jsonify("inventory.to_dict()"),200
 
 
-@app.route("/inventory/<int:inventory_id>", method=["DELETE"])
+@app.route("/inventory/<int:inventory_id>", methods=["DELETE"])
 def delete_inventory(inventory_id):
 
     inventory = next ((inventory for inventory in inventory if inventory.id == inventory_id), None)
